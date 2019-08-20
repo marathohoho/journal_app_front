@@ -19,6 +19,7 @@ import { loginUser} from '../redux/actions/userActions'
 const styles = theme => ({
     ...theme.spreadForStyles
 })
+
 export class login extends Component {
     constructor() {
         super();

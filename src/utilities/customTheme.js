@@ -27,10 +27,10 @@ export default {
         textAlign: 'center'
       },
       TextField: {
-        margin: '15px auto 30px auto'
+        margin: '15px auto 10px auto'
       },
       buttonForm : {
-        marginTop: '40px',
+        marginTop: '30px',
         marginBottom: '15px',
         position: 'relative'
       },

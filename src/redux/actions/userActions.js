@@ -4,13 +4,10 @@ import store from '../store'
 
 
 export const loginUser = (userData, history) => dispatch => {
-    console.log('I am in login user')
     dispatch({ type: LOADING_UI })
-    console.log(userData)
     axios.post('/login', userData)
         .then(res => {
-            console.log('setting authorization', res.data.JWT_token)
-            setAuthorizationToken(res.data.JWT_token);
+            setAuthorizationToken(res.data.token);
             dispatch({ type : CLEAR_ERRORS});
             history.push('/')
         })
@@ -20,9 +17,27 @@ export const loginUser = (userData, history) => dispatch => {
                 payload: err.response.data
             })
         })
-
 }
 
+
+export const signupUser = (userData, history) => dispatch =>{
+    dispatch({ type: LOADING_UI });
+    axios.post('/signup', userData)
+        .then(res => {
+            /** post request for registration also responds with a token
+             * Set the token into the Authorization header
+             */
+            setAuthorizationToken(res.data.token);
+            dispatch({ type: CLEAR_ERRORS });
+            history.push('/')
+        })
+        .catch(err => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            })
+        })
+}
 // export const signupUser = ()
 
 
