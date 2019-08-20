@@ -10,7 +10,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import withStyles from '@material-ui/core/styles/withStyles'
 
 //redux
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {logoutUser} from  '../redux/actions/userActions';
 
 /** On logout button is pressed the user muist log out. The logic is implrmenenyed alreadyu, just call the function from the prop. MapAction To Prop */
 
@@ -19,6 +20,11 @@ const styles = theme => ({
 })
 
 class navbar extends Component {
+
+    HandleLogOut = () => {
+        this.props.logoutUser();
+    }
+
     render() {
         const { classes, authenticated } = this.props;
         return (
@@ -28,7 +34,7 @@ class navbar extends Component {
                        <h1>Journal App</h1>
                         <div >
                             <div>
-                                {authenticated ? (<Button color='inherit' component={Link} to="/">Logout</Button>) : (
+                                {authenticated ? (<Button color='inherit' component={Link} onClick={this.HandleLogOut} to="/">Logout</Button>) : (
                                     <div>
                                         <Button color='inherit' component={Link} to="/login">Login</Button>
                                         <Button color='inherit' component={Link} to="/signup">Signup</Button>
@@ -51,5 +57,9 @@ const mapStateToProps = state => ({
     authenticated : state.user.authenticated
 })
 
+const mapActionToProps = {
+    logoutUser
+}
+
 // export default withStyles(styles)(navbar)
-export default connect(mapStateToProps)(withStyles(styles)(navbar))
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(navbar))

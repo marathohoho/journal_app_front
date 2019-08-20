@@ -28,8 +28,8 @@ import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser } from './redux/actions/userActions'
 
 //authentication using Bearer Token
-const expired = token => {
-  return token.exp * 1000 < Date.now();
+const expired = decodedToken => {
+  return decodedToken.exp * 1000 < Date.now();
 }
 
 const receivedToken = localStorage.AuthenticationToken;
@@ -40,6 +40,7 @@ if(receivedToken){
     window.location.href = '/login';
   }
   else{
+    console.log('triggered')
     store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common['Authorization'] = receivedToken;
   }

@@ -1,5 +1,6 @@
-import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, } from '../types';
+import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, SET_AUTHENTICATED } from '../types';
 import axios from 'axios';
+import store from '../store'
 
 
 export const loginUser = (userData, history) => dispatch => {
@@ -27,7 +28,7 @@ export const loginUser = (userData, history) => dispatch => {
 
 //handle logout event -> delete user token
 export const logoutUser = () => dispatch => {
-    localStorage.removeItem('FirebaseIDToken');
+    localStorage.removeItem('AuthenticationToken');
     delete axios.defaults.headers.common['Authorization'];
     dispatch({ type: SET_UNAUTHENTICATED})
 }
@@ -39,4 +40,6 @@ const setAuthorizationToken = token => {
     const FirebaseIDToken = `Bearer ${token}`;
     localStorage.setItem('AuthenticationToken', FirebaseIDToken);
     axios.defaults.headers.common['Authorization'] = FirebaseIDToken;
+    store.dispatch({ type: SET_AUTHENTICATED})
+
 }   
