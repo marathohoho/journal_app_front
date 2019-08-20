@@ -9,6 +9,13 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 
+
+//redux imports
+import { connect } from 'react-redux';
+import { loginUser} from '../redux/actions/userActions'
+
+
+//global styles from material design
 const styles = theme => ({
     ...theme.spreadForStyles
 })
@@ -32,21 +39,36 @@ export class login extends Component {
 
     handleSubmit = event => {
         /**prevent redirections */
+        event.preventDefault();
         const userData = {
             email : this.state.email,
             password : this.state.password
+        }
+
+        this.props.loginUser(userData, this.props.history);
+    }
+
+    componentWillReceiveProps(newProps) {
+        if(newProps.UI.errors) {
+            this.setState({
+                errors: newProps.UI.errors
+            })
         }
     }
 
     
     render() {
-        const { classes } = this.props;
-        let loading = false;
+        const { classes, 
+            UI: {
+                loading
+            } 
+        } = this.props;
+        const { errors } = this.state;
         return (
             <Grid container spaing={4} className={classes.form}>
                 <Grid item sm/>
                 <Grid item sm>
-                    <Typography variant="h4" className={classes.formTitle}>Register</Typography>
+                    <Typography variant="h4" className={classes.formTitle}>Login</Typography>
                     <form noValidate onSubmit={this.handleSubmit}>
                         
                         <TextField
@@ -57,8 +79,9 @@ export class login extends Component {
                             name="email"
                             label="E-mail"
                             className={classes.TextField}
-                            helperTest='error will be here'
+                            helperText={errors.email}
                             /**add error = {} */
+                            error={errors.email ? true : false}
                             value={this.state.email}
                             onChange={this.handleChange}
                             margin="normal"
@@ -68,15 +91,21 @@ export class login extends Component {
                             id="password"
                             name="password"
                             label="Password"
+                            type="password"
                             className={classes.TextField}
-                            helperTest='error will be here'
+                            helperText={errors.password}                            
                             /**add error = {} */
+                            error={errors.password ? true : false}
                             value={this.state.password}
                             onChange={this.handleChange}
                             margin="normal"
                             fullWidth
                         />
-
+                        {errors.general && (
+                            <Typography variant="body2" className={classes.generalError}>
+                                {errors.general}
+                            </Typography>
+                        )}
                         <Button 
                             type='submit'
                             variant='contained'
@@ -104,8 +133,20 @@ export class login extends Component {
 }
 
 login.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
+    loginUser : PropTypes.func.isRequired
+
 }
 
-export default withStyles(styles)(login)
+const mapStateToProps = state => ({
+    user: state.user,
+    UI: state.UI
+})
+
+const mapActionToProps = {
+    loginUser
+}
+
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(login))
 //test

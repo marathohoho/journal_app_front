@@ -36,6 +36,11 @@ export default {
       },
       loader : {
         position: 'absolute'
+      },
+      generalError: {
+        color: 'red', 
+        fontSize : '0.9rem',
+        marginTop: '10'
       }
     },
     
