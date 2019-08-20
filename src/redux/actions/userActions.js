@@ -5,9 +5,11 @@ import axios from 'axios';
 export const loginUser = (userData, history) => dispatch => {
     console.log('I am in login user')
     dispatch({ type: LOADING_UI })
+    console.log(userData)
     axios.post('/login', userData)
         .then(res => {
-            setAuthorizationToken(res.data.token);
+            console.log('setting authorization', res.data.JWT_token)
+            setAuthorizationToken(res.data.JWT_token);
             dispatch({ type : CLEAR_ERRORS});
             history.push('/')
         })
@@ -38,13 +40,3 @@ const setAuthorizationToken = token => {
     localStorage.setItem('AuthenticationToken', FirebaseIDToken);
     axios.defaults.headers.common['Authorization'] = FirebaseIDToken;
 }   
-
-
-
-// export const SET_AUTHENTICATED = 'SET_AUTHENTICATED'
-// export const SET_UNAUTHENTICATED = 'SET_UNAUTHENTICATED'
-// export const SET_USER = 'SET_USER'
-// export const LOADING_USER = 'LOADING_USER'
-// export const SET_ERRORS = 'SET_ERRORS'
-// export const LOADING_UI = 'LOADING_UI'
-// export const CLEAR_ERRROS = 'CLEAR_ERRROS'

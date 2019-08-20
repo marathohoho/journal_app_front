@@ -36,5 +36,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy" : "https://europe-west2-chingujournal.cloudfunctions.net/api"
+  "proxy" : "http://localhost:5000/chingujournal/europe-west2/api"
 }

@@ -28,7 +28,7 @@ class navbar extends Component {
                        <h1>Journal App</h1>
                         <div >
                             <div>
-                                {!authenticated ? (<Button color='inherit' component={Link} to="/">Logout</Button>) : (
+                                {authenticated ? (<Button color='inherit' component={Link} to="/">Logout</Button>) : (
                                     <div>
                                         <Button color='inherit' component={Link} to="/login">Login</Button>
                                         <Button color='inherit' component={Link} to="/signup">Signup</Button>
