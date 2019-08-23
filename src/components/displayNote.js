@@ -44,9 +44,9 @@ export class Note extends Component {
                     <Typography variant="h5" >
                         {title}
                       </Typography>
-                      {authenticated ? (
+                      { (
                         <DeleteNote noteId={noteId}/>
-                      ) : null}
+                      ) }
                       {/* <Button onClick={this.onDelete}>delete</Button>  */}
                 </div>
                 <div classes={classes.noteArea}>

@@ -14,16 +14,16 @@ const styles = theme => ({
 
 export class DeleteNote extends Component {
     onDelete = () =>{
+        console.log('we are deleting the note')
+
         this.props.deleteNote(this.props.noteId);
     }
     render() {
         const { classes } = this.props;
-        console.log('we are deleting the note')
         return (
             
             <div>
-                <Button classes={classes.buttons} onClick={this.onDelete}>DeleteIconMustBeHere</Button> 
-                <p>lalalal</p>
+                <Button classes={classes.buttons} onClick={this.onDelete}>DeleteButton</Button> 
             </div>
         )
     }

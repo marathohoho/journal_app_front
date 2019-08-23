@@ -30,12 +30,12 @@ export const getNotes = () => dispatch => {
 
 export const deleteNote = (noteId) => dispatch => {
     axios
-        .delete(`/note/${noteId}`)
+        .delete(`/notes/${noteId}`)
         .then(() => {
             dispatch({ type: DELETE_NOTE, payload: noteId});
         })
         .catch(err => {
-            console.log(err);
+            console.log('Could not delete the note ', err);
         })
 };
 
