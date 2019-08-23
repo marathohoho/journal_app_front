@@ -31,7 +31,7 @@ class navbar extends Component {
             <div>
                 <AppBar>
                    <Toolbar className={classes.buttonHeader}>
-                       <h1>Journal App</h1>
+                       <h1></h1>
                         <div >
                             <div>
                                 {authenticated ? (<Button color='inherit' component={Link} onClick={this.HandleLogOut} to="/">Logout</Button>) : (

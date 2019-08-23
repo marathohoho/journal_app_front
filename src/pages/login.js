@@ -66,8 +66,9 @@ export class login extends Component {
         } = this.props;
         const { errors } = this.state;
         return (
-            <Grid container spaing={4} className={classes.form}>
+            <Grid container alignContent='space-between' spacing={4} className={classes.form}>
                 <Grid item sm/>
+
                 <Grid item sm>
                     <Typography variant="h4" className={classes.formTitle}>Login</Typography>
                     <form noValidate onSubmit={this.handleSubmit}>
@@ -122,10 +123,11 @@ export class login extends Component {
                             )}
                         </Button>   
                         <br/>
-                        <p><small>join us <Link color="primary" to="/signup">here</Link></small></p> 
+                        <p className={classes.editedTag}><small>join us <Link color="primary" to="/signup">here</Link></small></p> 
                     </form>
                 </Grid>
                 <Grid item sm/>
+
 
 
             </Grid>

@@ -20,7 +20,9 @@ export default {
         justifyContent: 'space-between',
       },
       form: {
-        textAlign : 'center'
+        textAlign : 'center',
+        alignContent: 'center',
+        padding: '0px 300px 0px 300px'
       },
       formTitle: {
         margin: '80px auto 10px auto',
@@ -43,5 +45,56 @@ export default {
         marginTop: '10'
       }
     },
+    spreadForStylesForNote : {
+      root: {
+        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center'
+        
+      },
+      paper: {
+        margin: 'auto',
+        maxWidth: 1200,
+        width: '100%',
+        margin : '100px auto 100px auto'
+      },
+      image: {
+        width: 128,
+        height: 128,
+      },
+      img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+      },
+      buttons : {
+        margin: '10px auto 10px auto',
+        padding: '10px auto 10px auto'
+      },
+      editedTag: {
+        color: 'grey',
+        margin: '0px 0px',
+        padding: '0px 0px 0px 10px',
+        width: '200px'
+      },
+      noteArea: {
+        maxHeight: '300px',
+        padding: '30px'
+      },
+      titleArea: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '10px 0 10px 30px'
+      },
+      noteFooter : {
+        display : 'flex',
+        flexDirection: 'column',
+        width : 'full',
+        justifyContent : 'center'
+         
+      }
+    }
     
 }
