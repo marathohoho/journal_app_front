@@ -28,7 +28,6 @@ export class Note extends Component {
     render() {
         dayjs.extend(relativeTime);
         const {classes,
-          authenticated,
           note : {
               title,
               body,
@@ -74,8 +73,7 @@ Note.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  data: state.data,
-  authenticated : state.user.authenticated
+  data: state.data
 })
 /** Userful stuff Text Area Autosize */
 export default connect(mapStateToProps)(withStyles(styles)(Note))

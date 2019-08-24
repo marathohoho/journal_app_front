@@ -2,10 +2,12 @@ import { SET_NOTES,
     SET_NOTE, 
     DELETE_NOTE, 
     POST_NOTE, 
-    LOADING_DATA 
+    LOADING_DATA, 
+    LOADING_UI,
+    CLEAR_ERRORS,
+    SET_ERRORS
 } from '../types';
 import axios from 'axios';
-import { awaitExpression } from '@babel/types';
 
 /** retrieve all notes for the authenticated user */
 export const getNotes = () => dispatch => {
@@ -39,3 +41,21 @@ export const deleteNote = (noteId) => dispatch => {
         })
 };
 
+export const addNote = newNote => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios
+        .post('/note', newNote)
+        .then(res => {
+            dispatch({
+                type : POST_NOTE,
+                payload : res.data
+            });
+            dispatch({ type: CLEAR_ERRORS })
+        })
+        .catch(err => {
+            dispatch({
+                type : SET_ERRORS,
+                payload : err.response.data
+            });
+        });
+};

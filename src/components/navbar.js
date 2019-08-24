@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment} from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import PropTypes from 'prop-types';
-
+import AddNote from '../components/AddNote'
 /** material ui stuff */
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -16,7 +16,19 @@ import {logoutUser} from  '../redux/actions/userActions';
 /** On logout button is pressed the user muist log out. The logic is implrmenenyed alreadyu, just call the function from the prop. MapAction To Prop */
 
 const styles = theme => ({
-    ...theme.spreadForStyles
+    ...theme.spreadForStyles,
+    authenticatedButtons : {
+        alignContent: 'center',
+        color : 'secondary'
+    },
+    fab: {
+        margin: theme.spacing(2),
+    },
+    absolute: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(3),
+    },
 })
 
 class navbar extends Component {
@@ -31,16 +43,23 @@ class navbar extends Component {
             <div>
                 <AppBar>
                    <Toolbar className={classes.buttonHeader}>
-                       <h1></h1>
-                        <div >
-                            <div>
-                                {authenticated ? (<Button color='inherit' component={Link} onClick={this.HandleLogOut} to="/">Logout</Button>) : (
-                                    <div>
-                                        <Button color='inherit' component={Link} to="/login">Login</Button>
-                                        <Button color='inherit' component={Link} to="/signup">Signup</Button>
-                                    </div>
+                       <h1>Journal App </h1> 
+                       <div className={classes.authenticatedButtons}>
+                           {authenticated ? 
+                        ( <AddNote/> ) : (null)}
+                       </div>
+                        <div>
+                                {authenticated ? 
+                                    ( 
+                                        <div>
+                                            <Button color='inherit' component={Link} onClick={this.HandleLogOut} to="/">Logout</Button>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <Button color='inherit' component={Link} to="/login">Login</Button>
+                                            <Button color='inherit' component={Link} to="/signup">Signup</Button>
+                                        </div>
                                 )}
-                            </div>
                         </div>
                    </Toolbar>
                 </AppBar>

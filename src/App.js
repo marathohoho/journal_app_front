@@ -9,7 +9,6 @@ import axios from 'axios'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-
 /** Components */
 import Navbar from './components/navbar';
 import AuthenticationRoute from './components/AuthenticationRoute'
@@ -19,7 +18,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
-
 
 /** Redux imports */
 import store from './redux/store'
@@ -31,6 +29,9 @@ import { logoutUser } from './redux/actions/userActions'
 const expired = decodedToken => {
   return decodedToken.exp * 1000 < Date.now();
 }
+
+axios.defaults.baseURL = 
+  'http://localhost:5000/chingujournal/europe-west2/api';
 
 const receivedToken = localStorage.AuthenticationToken;
 if(receivedToken){

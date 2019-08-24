@@ -7,9 +7,22 @@ import PropTypes from 'prop-types';
 /** material UI imports */
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const styles = theme => ({
-    ...theme.spreadForStylesForNote
+    ...theme.spreadForStylesForNote,
+    deleteButton : {
+        color: 'red'
+    },
+    fab: {
+        margin: theme.spacing(2),
+    },
+    absolute: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(3),
+    },
 })
 
 export class DeleteNote extends Component {
@@ -23,7 +36,11 @@ export class DeleteNote extends Component {
         return (
             
             <div>
-                <Button classes={classes.buttons} onClick={this.onDelete}>DeleteButton</Button> 
+                <Button classes={classes.buttons} onClick={this.onDelete}>
+                    <Tooltip title='Delete Note'>
+                        <DeleteForeverIcon className={classes.deleteButton}/>    
+                    </Tooltip>    
+                </Button> 
             </div>
         )
     }

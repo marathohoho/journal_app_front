@@ -46,7 +46,7 @@ export const logoutUser = () => dispatch => {
     localStorage.removeItem('AuthenticationToken');
     delete axios.defaults.headers.common['Authorization'];
     dispatch({ type: SET_UNAUTHENTICATED})
-    window.location.href = '/login'
+    // window.location.href = '/login'
 }
 
 

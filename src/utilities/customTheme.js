@@ -54,7 +54,6 @@ export default {
         
       },
       paper: {
-        margin: 'auto',
         maxWidth: 1200,
         width: '100%',
         margin : '100px auto 100px auto'
