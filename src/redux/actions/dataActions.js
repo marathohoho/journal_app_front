@@ -31,13 +31,21 @@ export const getNotes = () => dispatch => {
 
 
 export const deleteNote = (noteId) => dispatch => {
+    dispatch({ type: LOADING_UI });
     axios
         .delete(`/notes/${noteId}`)
         .then(() => {
-            dispatch({ type: DELETE_NOTE, payload: noteId});
+            dispatch({ 
+                type: DELETE_NOTE, 
+                payload: noteId
+            });
         })
         .catch(err => {
-            console.log('Could not delete the note ', err);
+             dispatch({
+                 type : SET_ERRORS,
+                 payload : err.response.data
+             })
+            // console.log('Could not delete the note ', err);
         })
 };
 

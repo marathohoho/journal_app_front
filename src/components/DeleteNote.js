@@ -9,19 +9,12 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = theme => ({
-    ...theme.spreadForStylesForNote,
+    ...theme.spreadForStyles,
     deleteButton : {
         color: 'red'
-    },
-    fab: {
-        margin: theme.spacing(2),
-    },
-    absolute: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(3),
     },
 })
 
@@ -32,14 +25,24 @@ export class DeleteNote extends Component {
         this.props.deleteNote(this.props.noteId);
     }
     render() {
-        const { classes } = this.props;
+        const { 
+            classes,
+            UI : {
+                loading
+            }
+         } = this.props;
         return (
             
             <div>
-                <Button classes={classes.buttons} onClick={this.onDelete}>
+                <Button className={classes.buttonForm} onClick={this.onDelete}>
                     <Tooltip title='Delete Note'>
-                        <DeleteForeverIcon className={classes.deleteButton}/>    
+                        <DeleteForeverIcon className={classes.deleteButton}/> 
                     </Tooltip>    
+                        {loading && (
+                        <CircularProgress
+                            size={30}
+                            className={classes.loader}
+                        />)}   
                 </Button> 
             </div>
         )
@@ -48,9 +51,12 @@ export class DeleteNote extends Component {
 
 DeleteNote.propTypes = {
     classes : PropTypes.object.isRequired,
-    deleteNote : PropTypes.func.isRequired
+    deleteNote : PropTypes.func.isRequired,
+    UI : PropTypes.object.isRequired
 }
 
+const mapStateToProps = state => ({
+    UI: state.UI
+})
 
-
-export default connect(null, {deleteNote})(withStyles(styles)(DeleteNote))
+export default connect(mapStateToProps, {deleteNote})(withStyles(styles)(DeleteNote))

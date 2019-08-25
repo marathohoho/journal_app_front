@@ -46,11 +46,10 @@ export class Note extends Component {
                       { (
                         <DeleteNote noteId={noteId}/>
                       ) }
-                      {/* <Button onClick={this.onDelete}>delete</Button>  */}
                 </div>
                 <div classes={classes.noteArea}>
                 <Typography variant="body2" gutterBottom className={classes.noteArea}>
-                          {body}
+                          {body} 
                         </Typography>
                 </div>
 
