@@ -6,7 +6,7 @@ import { SET_NOTES,
     LOADING_UI,
     CLEAR_ERRORS,
     SET_ERRORS,
-    STOP_LOADING_UI
+    STOP_LOADING_UI,
 } from '../types';
 import axios from 'axios';
 
@@ -67,3 +67,40 @@ export const addNote = newNote => dispatch => {
             });
         });
 };
+
+
+// change here as well
+export const getNote = noteId => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios
+        .get(`/note/${noteId}`)
+        .then(res => {
+            console.log('getting one note')
+            dispatch({
+                type: SET_NOTE,
+                payload : res.data
+            });
+            dispatch({ type: STOP_LOADING_UI });
+        })
+        .catch(err => console.log(err));
+}
+
+// //change here as well
+// export const editNote = (noteId, updatedNote) => dispatch => {
+//     dispatch({ type: LOADING_UI });
+//     axios
+//         .put(`/note/${noteId}`, updatedNote)
+//         .then(() => {
+//             dispatch({ 
+//                 type  : , 
+//                 payload: noteId
+//             });
+//             dispatch({ type : CLEAR_ERRORS});
+//         })
+//         .catch(err => {
+//              dispatch({
+//                  type : SET_ERRORS,
+//                  payload : err.response.data
+//              })
+//         })
+// };

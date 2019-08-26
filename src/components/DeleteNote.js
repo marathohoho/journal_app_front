@@ -20,8 +20,6 @@ const styles = theme => ({
 
 export class DeleteNote extends Component {
     onDelete = () =>{
-        console.log('we are deleting the note')
-
         this.props.deleteNote(this.props.noteId);
     }
     render() {

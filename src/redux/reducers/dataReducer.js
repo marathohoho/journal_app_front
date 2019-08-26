@@ -14,7 +14,7 @@ const initialState = {
                 notes : action.payload,
                 loading: false
             };
-        case SET_NOTE : 
+        case SET_NOTE :  
             return {
                 ...state, 
                 note : action.payload

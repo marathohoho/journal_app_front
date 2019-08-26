@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 
 /** Component imports */
 import DeleteNote from '../components/DeleteNote';
+import EditNote from '../components/EditNote';
+
 
 /** Material UI */
 import { 
@@ -16,6 +18,9 @@ import {
     Paper     
 } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles'
+import EditIcon from '@material-ui/icons/Edit';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 /** import styles */
 const styles = theme => ({
@@ -24,7 +29,7 @@ const styles = theme => ({
 })
 
 export class Note extends Component {
-   
+
     render() {
         dayjs.extend(relativeTime);
         const {classes,
@@ -60,9 +65,8 @@ export class Note extends Component {
                   <small className={classes.editedTag}>
                     Created {dayjs(createdAt).fromNow()}
                   </small>
-                  <Button className={classes.buttons}>
-                    Edit
-                  </Button>
+                  <EditNote noteId={noteId}/>
+                
                 </div>
               </Paper>
           </div>
