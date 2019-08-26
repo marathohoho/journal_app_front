@@ -2,7 +2,6 @@ import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, SET_AUTHENTI
 import axios from 'axios';
 import store from '../store'
 
-
 export const loginUser = (userData, history) => dispatch => {
     dispatch({ type: LOADING_UI })
     axios.post('/login', userData)
@@ -18,7 +17,6 @@ export const loginUser = (userData, history) => dispatch => {
             })
         })
 }
-
 
 export const signupUser = (userData, history) => dispatch =>{
     dispatch({ type: LOADING_UI });
@@ -38,15 +36,12 @@ export const signupUser = (userData, history) => dispatch =>{
             })
         })
 }
-// export const signupUser = ()
-
 
 //handle logout event -> delete user token
 export const logoutUser = () => dispatch => {
     localStorage.removeItem('AuthenticationToken');
     delete axios.defaults.headers.common['Authorization'];
     dispatch({ type: SET_UNAUTHENTICATED})
-    // window.location.href = '/login'
 }
 
 

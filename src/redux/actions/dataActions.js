@@ -5,7 +5,8 @@ import { SET_NOTES,
     LOADING_DATA, 
     LOADING_UI,
     CLEAR_ERRORS,
-    SET_ERRORS
+    SET_ERRORS,
+    STOP_LOADING_UI
 } from '../types';
 import axios from 'axios';
 
@@ -29,7 +30,6 @@ export const getNotes = () => dispatch => {
         });
 }
 
-
 export const deleteNote = (noteId) => dispatch => {
     dispatch({ type: LOADING_UI });
     axios
@@ -39,13 +39,13 @@ export const deleteNote = (noteId) => dispatch => {
                 type: DELETE_NOTE, 
                 payload: noteId
             });
+            dispatch({ type : CLEAR_ERRORS});
         })
         .catch(err => {
              dispatch({
                  type : SET_ERRORS,
                  payload : err.response.data
              })
-            // console.log('Could not delete the note ', err);
         })
 };
 

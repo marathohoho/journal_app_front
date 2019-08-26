@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 /** redux & functions */
-import {addNote} from '../redux/actions/dataActions';
+import {addNote, getNotes} from '../redux/actions/dataActions';
 import { connect } from 'react-redux';
 import { CLEAR_ERRORS } from '../redux/types';
 import store from '../redux/store';
@@ -81,6 +81,15 @@ class AddNote extends Component {
                 errors : errorsProps.UI.errors
             });
         }
+        if(!errorsProps.UI.errors && !errorsProps.UI.loading) {
+            this.setState({
+                title: '', 
+                body: '',
+                errors : {},
+                dialogOpen : false
+            });
+            // this.props.getNotes()
+        }
     };
     
     render() {
@@ -118,6 +127,7 @@ class AddNote extends Component {
                                 helperText={errors.title}
                                 className={classes.TextField}
                                 onChange={this.handleChange}
+                                defaultValue={this.state.title}
                                 fullWidth
                             />
                             <TextField
@@ -131,6 +141,7 @@ class AddNote extends Component {
                                 helperText={errors.body}
                                 className={classes.TextField}
                                 onChange={this.handleChange}
+                                defaultValue={this.state.body}
                                 fullWidth
                             />
                             <Button
@@ -164,5 +175,9 @@ const mapStateToProps = state => ({
     UI : state.UI
 })
 
+const mapActionsToProps = {
+    addNote,
+    getNotes
+}
 
-export default connect(mapStateToProps, {addNote})(withStyles(styles)(AddNote));
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(AddNote));

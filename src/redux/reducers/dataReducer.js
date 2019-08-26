@@ -27,10 +27,15 @@ const initialState = {
         case DELETE_NOTE : 
             let id = state.notes.findIndex(note => note.noteId === action.payload);
             state.notes.splice(id, 1);
-    
             return {
-                ...state
+                ...state,
+                loading: false
             };
+        case POST_NOTE:
+                return {
+                  ...state,
+                  notes: [action.payload, ...state.notes]
+                };
         default :
             return state;
         

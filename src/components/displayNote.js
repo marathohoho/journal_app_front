@@ -40,26 +40,30 @@ export class Note extends Component {
           <div className={classes.root}>
               <Paper className={classes.paper}>
                 <div className={classes.titleArea}>
-                    <Typography variant="h5" >
-                        {title}
-                      </Typography>
-                      { (
-                        <DeleteNote noteId={noteId}/>
-                      ) }
+                  <Typography variant="h5" >
+                      {title}
+                    </Typography>
+                    { (
+                      <DeleteNote noteId={noteId}/>
+                    ) }
                 </div>
                 <div classes={classes.noteArea}>
-                <Typography variant="body2" gutterBottom className={classes.noteArea}>
-                          {body} 
-                        </Typography>
+                  <Typography 
+                    variant="body2" 
+                    gutterBottom 
+                    className={classes.noteArea}
+                    >
+                      {body} 
+                  </Typography>
                 </div>
-
-
                 <div classes={classes.noteFooter}>
-                    <small className={classes.editedTag}>Created {dayjs(createdAt).fromNow()}</small>
-                    <Button className={classes.buttons}>Edit</Button>
+                  <small className={classes.editedTag}>
+                    Created {dayjs(createdAt).fromNow()}
+                  </small>
+                  <Button className={classes.buttons}>
+                    Edit
+                  </Button>
                 </div>
-              
-              
               </Paper>
           </div>
         )
