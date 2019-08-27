@@ -49,7 +49,7 @@ export class login extends Component {
         this.props.loginUser(userData, this.props.history);
     }
 
-    componentWillReceiveProps(newProps) {
+    UNSAFE_componentWillReceiveProps(newProps) {
         if(newProps.UI.errors) {
             this.setState({
                 errors: newProps.UI.errors

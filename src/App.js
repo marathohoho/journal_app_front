@@ -37,8 +37,10 @@ const expired = decodedToken => {
 }
 
 axios.defaults.baseURL = 
-  // 'https://europe-west2-chingujournal.cloudfunctions.net/api';
-  'http://localhost:5000/chingujournal/europe-west2/api';
+  'https://europe-west2-chingujournal.cloudfunctions.net/api';
+  // 'http://localhost:5000/chingujournal/europe-west2/api';
+
+  
 
 
 const receivedToken = localStorage.AuthenticationToken;
@@ -85,3 +87,9 @@ class App extends Component {
 }
 
 export default App;
+
+/**
+ * password promt be more specfic DONE
+ * edit button make a s SUBMIT
+ * make a static background for the home page
+ */

@@ -27,7 +27,8 @@ const styles = theme => ({
     ...theme.spreadForStyles,
     editButton : {
         color: 'primary',
-        textAlign : 'center'
+        textAlign : 'center',
+        color : '#000'
     },
 })
 
@@ -79,14 +80,7 @@ export class EditNote extends Component {
             title : this.state.title,
             body : this.state.body
         }
-        this.props.editNote(this.props.noteId, editedNote);
-        // this.setState({
-        //     dialogOpen: false,
-        //     title : '',
-        //     body: '',
-        //     errors : {}
-        // });
-    
+        this.props.editNote(this.props.noteId, editedNote);    
     }
 
     UNSAFE_componentWillReceiveProps(errorsProps) {
@@ -122,7 +116,7 @@ export class EditNote extends Component {
                         className={classes.buttons} 
                         onClick={!loading? this.handleOpen : null}
                     >
-                        <EditIcon/>
+                        <EditIcon className={classes.editButton}/>
                         {loading && (
                                 <CircularProgress
                                     size={30}
@@ -183,7 +177,7 @@ export class EditNote extends Component {
                                 color="primary"
                                 disabled={loading}
                             >
-                                Edit
+                                Submit
                                 {loading && (
                                     <CircularProgress
                                         size={30}

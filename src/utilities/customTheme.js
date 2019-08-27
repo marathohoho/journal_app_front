@@ -4,7 +4,7 @@ export default {
         primary: {
           light: '#0093c4',
           main: '#0093c4',
-          dark: '#0093c4',
+          dark: '#ffff',
           contrastText: '#fff',
         },
         secondary: {
@@ -58,23 +58,15 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         alignContent: 'center',
-        marginTop : '50px'
+        marginTop : '70px'
         
       },
       paper: {
-        maxWidth: 800,
+        maxWidth: 700,
         width: '100%',
-        margin : '0px auto 30px auto'
-      },
-      image: {
-        width: 128,
-        height: 128,
-      },
-      img: {
-        margin: 'auto',
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
+        margin : '0px auto 30px auto',
+        background : 'white',
+      
       },
       buttons : {
         margin: '10px auto 10px auto',
@@ -89,7 +81,9 @@ export default {
       },
       noteArea: {
         maxHeight: '300px',
-        padding: '10px'
+        padding: '0px',
+        wordWrap: 'break-word',
+        width: '100%'
       },
       titleArea: {
         display: 'flex',
@@ -105,8 +99,13 @@ export default {
       },
       pleaseLoginText : {
         margin : '350px auto 200px auto',
-        textAlign : 'center'
-      }
+        textAlign : 'center',
+        color: 'white',
+        fontSize : '20px'
+      },
+      gridList : {
+        cols : '4',
+      },
     }
     
 }

@@ -27,7 +27,7 @@ export class home extends Component {
         let yourNotes = !loading ? (
             notes.map(note => <Note key={note.noteId} note={note} classes={classes} />)
         ) : (
-            <div className="lds-hourglass"></div>
+            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         )
 
         const {authenticated} = this.props;

@@ -20,12 +20,25 @@ import {
 import withStyles from '@material-ui/core/styles/withStyles'
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import GridList from '@material-ui/core/GridList';
+
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
+
 
 
 /** import styles */
 const styles = theme => ({
     ...theme.spreadForStylesForNote,
-    ...theme.spreadForStyles
+    ...theme.spreadForStyles,
+ 
+    localTypography : {
+      width: '100%',
+      wordWrap: 'break-word',
+      
+    }
    
 })
 
@@ -46,33 +59,41 @@ export class Note extends Component {
         return (
           <div className={classes.root}>
               <Paper className={classes.paper}>
-                <div className={classes.titleArea}>
-                  <Typography variant="h5" >
-                      {title}
-                    </Typography>
-                    { (
-                      <DeleteNote noteId={noteId}/>
-                    ) }
-                </div>
-                <div classes={classes.noteArea}>
-                  <Typography 
-                    variant="body2" 
-                    gutterBottom 
-                    className={classes.noteArea}
-                    >
-                      {body} 
-                  </Typography>
-                </div>
-                <div classes={classes.noteFooter}>
-                  {editedAt ? (<small className={classes.editedTag}>
-                    Edited {dayjs(editedAt).fromNow()}
-                  </small>):
-                  (<small className={classes.editedTag}>
-                    Created {dayjs(createdAt).fromNow()}
-                  </small>)
-                  }
-                  <EditNote noteId={noteId}/>
-                </div>
+                <Card>
+                  <div className={classes.titleArea}>
+                    <Typography variant="h5" >
+                        {title}
+                      </Typography>
+                      { (
+                        <DeleteNote noteId={noteId}/>
+                      ) }
+                  </div>
+                  <CardContent>
+                    <div >
+                      <Paper >
+                      <GridList className={classes.gridList}>
+                        <Typography 
+                          variant="body2" 
+                          className={classes.noteArea}
+                          >
+                            {body} 
+                        </Typography> 
+                      </GridList>
+                        </Paper>      
+                    </div>
+                  </CardContent>
+                  <div classes={classes.noteFooter}>
+                    {editedAt ? (<small className={classes.editedTag}>
+                      Edited {dayjs(editedAt).fromNow()}
+                    </small>):
+                    (<small className={classes.editedTag}>
+                      Created {dayjs(createdAt).fromNow()}
+                    </small>)
+                    }
+                    <EditNote noteId={noteId}/>
+                  </div>
+
+                </Card>
               </Paper>
           </div>
         )
