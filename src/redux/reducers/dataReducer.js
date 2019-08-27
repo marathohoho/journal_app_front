@@ -1,4 +1,4 @@
-import { SET_NOTES, SET_NOTE, DELETE_NOTE, POST_NOTE, LOADING_DATA} from '../types'
+import { CLEAR_NOTE, SET_NOTES, SET_NOTE, DELETE_NOTE, POST_NOTE, LOADING_DATA} from '../types'
 
 const initialState = {
     notes: [],
@@ -36,6 +36,12 @@ const initialState = {
                   ...state,
                   notes: [action.payload, ...state.notes]
                 };
+        case CLEAR_NOTE : {
+            return {
+                ...state,
+                note : []
+            }
+        }
         default :
             return state;
         

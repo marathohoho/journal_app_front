@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getNote, editNote} from '../redux/actions/dataActions';
 import store from '../redux/store';
-import { CLEAR_ERRORS } from '../redux/types';
+import { CLEAR_ERRORS, CLEAR_NOTE } from '../redux/types';
 
 
 /** material UI imports */
@@ -34,7 +34,7 @@ export class EditNote extends Component {
         body : '',
         errors : {}
     }
-    
+
     handleOpen = () => {
         this.props.getNote(this.props.noteId);
         this.setState({ dialogOpen : true });
@@ -53,6 +53,8 @@ export class EditNote extends Component {
 
     handleClose = () => {
         store.dispatch({ type : CLEAR_ERRORS });
+        /** need to dispatch clearing of node object as well */
+        store.dispatch({ type : CLEAR_NOTE });
         this.setState({
             dialogOpen: false,
             title : '',
@@ -74,6 +76,13 @@ export class EditNote extends Component {
             body : this.state.body
         }
         this.props.editNote(this.props.noteId, editedNote);
+        // this.setState({
+        //     dialogOpen: false,
+        //     title : '',
+        //     body: '',
+        //     errors : {}
+        // });
+    
     }
 
     UNSAFE_componentWillReceiveProps(errorsProps) {
