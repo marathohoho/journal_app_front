@@ -40,7 +40,9 @@ export class home extends Component {
                     </Grid>
                     </Grid>
                     ) : (
-                        <p> Please authenticate</p>
+                        <div className={classes.pleaseLoginText}>
+                            <p>Please Authenticate</p>
+                        </div>
                     )
                 }
             </div>

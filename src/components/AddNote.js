@@ -19,6 +19,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
+import CloseIcon from '@material-ui/icons/Close';         
+
 
 
 const styles = theme => ({
@@ -115,7 +117,15 @@ class AddNote extends Component {
                     fullWidth
                     maxWidth="sm"
                 >
-                    <DialogTitle>Create a new journal note</DialogTitle>
+                    <div className={classes.buttonHeader}>
+                        <DialogTitle>Create a new journal note</DialogTitle>
+                        <Button>
+                            <CloseIcon 
+                                className={classes.closeIcon} 
+                                onClick={this.handleClose}
+                            />
+                        </Button>
+                    </div>
                     <DialogContent>
                         <form onSubmit={this.handleSubmit}>
                             <TextField
@@ -144,20 +154,22 @@ class AddNote extends Component {
                                 defaultValue={this.state.body}
                                 fullWidth
                             />
-                            <Button
-                                type="submit"
-                                color="primary"
-                                className={classes.buttonForm}
-                                disabled={loading}
-                            >
-                                Submit
-                                {loading && (
-                                    <CircularProgress
-                                        size={30}
-                                        className={classes.loader}
-                                    />
-                                )}
-                            </Button>
+                                
+                            <div className={classes.buttonForm}>
+                                <Button
+                                    type="submit"
+                                    color="primary"
+                                    disabled={loading}
+                                >
+                                    Submit
+                                    {loading && (
+                                        <CircularProgress
+                                            size={30}
+                                            className={classes.loader}
+                                        />
+                                    )}
+                                </Button>
+                            </div>
                         </form>
                     </DialogContent>
                 </Dialog>  

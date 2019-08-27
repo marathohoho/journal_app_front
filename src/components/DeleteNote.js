@@ -43,7 +43,7 @@ export class DeleteNote extends Component {
         return (
             
             <div>
-                <Button className={classes.deleteButtonParent} onClick={this.onDelete}>
+                <Button  onClick={this.onDelete}>
                     <Tooltip title='Delete Note'>
                         <DeleteForeverIcon className={classes.deleteButton}/> 
                     </Tooltip>    

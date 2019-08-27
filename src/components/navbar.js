@@ -58,19 +58,19 @@ class navbar extends Component {
                         <Grid
                             container 
                             alignContent="space-between"
-                            spacing={4}
+                            spacing={0}
                             justify="flex-end"
                         >
-                            <Grid item sm>
-                                <h1 className={classes.journalText}>Journal App | Chingu </h1> 
+                            <Grid item xs>
+                                <h1 className={classes.journalText}>Journal App</h1> 
                             </Grid>
-                            <Grid item sm>
+                            <Grid item xs>
                                 <div className={classes.authenticatedButtons}>
                                     {authenticated ? 
                                     ( <AddNote/> ) : (null)}
                                 </div>
                             </Grid>
-                            <Grid item sm >
+                            <Grid item xs>
                                 <div className={classes.loginButtons}>
                                     {authenticated ? 
                                         ( 

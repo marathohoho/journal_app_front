@@ -16,13 +16,17 @@ export default {
     },
     spreadForStyles : {
       buttonHeader: {
-        display: 'frex',
+        display: 'flex',
         justifyContent: 'space-between',
+      },
+      closeIcon : {
+        alignSelf: 'center',
+        paddingRight: '10px'
       },
       form: {
         textAlign : 'center',
         alignContent: 'center',
-        padding: '0px 300px 0px 300px'
+        padding: '0px 0px 0px 0px'
       },
       formTitle: {
         margin: '80px auto 10px auto',
@@ -35,6 +39,7 @@ export default {
         marginTop: '55px',
         marginBottom: '0px',
         position: 'relative',
+        textAlign : 'center'
         // right: '-18.5%',
         // top: '-18.5%'
       },
@@ -52,13 +57,14 @@ export default {
         flexGrow: 1,
         display: 'flex',
         justifyContent: 'center',
-        alignContent: 'center'
+        alignContent: 'center',
+        marginTop : '50px'
         
       },
       paper: {
-        maxWidth: 1200,
+        maxWidth: 800,
         width: '100%',
-        margin : '100px auto 0px auto'
+        margin : '0px auto 30px auto'
       },
       image: {
         width: 128,
@@ -96,6 +102,10 @@ export default {
         width : 'full',
         justifyContent : 'center'
          
+      },
+      pleaseLoginText : {
+        margin : '350px auto 200px auto',
+        textAlign : 'center'
       }
     }
     

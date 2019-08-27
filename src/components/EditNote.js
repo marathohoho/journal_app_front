@@ -19,11 +19,15 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
+import CloseIcon from '@material-ui/icons/Close';         
+
+
 
 const styles = theme => ({
     ...theme.spreadForStyles,
     editButton : {
-        color: 'primary'
+        color: 'primary',
+        textAlign : 'center'
     },
 })
 
@@ -93,6 +97,9 @@ export class EditNote extends Component {
         }
     };
     
+    printBS = () => {
+        alert('some bullshit')
+    }
 
     render() {
         const { 
@@ -131,7 +138,15 @@ export class EditNote extends Component {
                 fullWidth
                 maxWidth="sm"
             >
-                <DialogTitle>Edit your journal note</DialogTitle>
+                <div className={classes.buttonHeader}>
+                    <DialogTitle>Edit your journal note</DialogTitle>
+                    <Button>
+                        <CloseIcon 
+                            className={classes.closeIcon} 
+                            onClick={this.handleClose}  
+                        />
+                    </Button>
+                </div>
                 <DialogContent>
                     <form onSubmit={this.handleSubmit}>
                         <TextField
@@ -162,20 +177,21 @@ export class EditNote extends Component {
                             disabled={loading}
                             fullWidth
                         />
-                        <Button
-                            type="submit"
-                            color="primary"
-                            className={classes.buttonForm}
-                            disabled={loading}
-                        >
-                            Edit
-                            {loading && (
-                                <CircularProgress
-                                    size={30}
-                                    className={classes.loader}
-                                />
-                            )}
-                        </Button>
+                        <div className={classes.editButton} >
+                            <Button
+                                type="submit"
+                                color="primary"
+                                disabled={loading}
+                            >
+                                Edit
+                                {loading && (
+                                    <CircularProgress
+                                        size={30}
+                                        className={classes.loader}
+                                    />
+                                )}
+                            </Button>
+                        </div>
                     </form>
                 </DialogContent>
             </Dialog>  

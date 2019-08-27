@@ -8,8 +8,9 @@ body {
 
 .container{
   margin: 80px auto 0 auto;
-  max-width: 1600px;
+  max-width: 1000px;
   z-index:0;
+  /* text-align: center; */
 }
 
 .home-container{
@@ -43,12 +44,11 @@ p{
 /* Loader */
 .lds-hourglass {
   display: inline-block;
-  position: relative;
+  /* position: relative; */
   width: 128px;
   height: 128px;
   padding-top: 100px;
   text-align: center;
-  left: 48.4%;
   
 }
 .lds-hourglass:after {
@@ -83,5 +83,5 @@ p{
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: -1;
 }

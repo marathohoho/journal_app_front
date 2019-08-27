@@ -24,7 +24,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 /** import styles */
 const styles = theme => ({
-    ...theme.spreadForStylesForNote
+    ...theme.spreadForStylesForNote,
+    ...theme.spreadForStyles
    
 })
 
