@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /** redux related imports */
 import {connect} from 'react-redux';
-import {getNote} from '../redux/actions/dataActions';
+import {getNote, editNote} from '../redux/actions/dataActions';
 import store from '../redux/store';
 import { CLEAR_ERRORS } from '../redux/types';
 
@@ -36,10 +36,19 @@ export class EditNote extends Component {
     }
     
     handleOpen = () => {
-
+        this.props.getNote(this.props.noteId);
         this.setState({ dialogOpen : true });
         console.log('opening the dialog window')
-        this.props.getNote(this.props.noteId);
+    
+    }
+
+    handleWhenEntering = () => {
+        
+        console.log('title is: ', this.props.note.title)
+        this.setState({
+            title: this.props.note.title,
+            body : this.props.note.body,
+        })
     }
 
     handleClose = () => {
@@ -64,8 +73,17 @@ export class EditNote extends Component {
             title : this.state.title,
             body : this.state.body
         }
-        //this.props.editNote()
+        this.props.editNote(this.props.noteId, editedNote);
     }
+
+    UNSAFE_componentWillReceiveProps(errorsProps) {
+        if(errorsProps.UI.errors) {
+            this.setState({
+                errors : errorsProps.UI.errors
+            });
+        }
+    };
+    
 
     render() {
         const { 
@@ -86,7 +104,7 @@ export class EditNote extends Component {
                 <Tooltip title="Edit the Note">
                     <Button 
                         className={classes.buttons} 
-                        onClick={this.handleOpen}
+                        onClick={!loading? this.handleOpen : null}
                     >
                         <EditIcon/>
                         {loading && (
@@ -98,7 +116,8 @@ export class EditNote extends Component {
                     </Button>
                 </Tooltip> 
             <Dialog 
-                open={!loading ? this.state.dialogOpen : false}
+                open={title ? this.state.dialogOpen : false}
+                onEntering={this.handleWhenEntering}
                 onClose={this.handleClose}
                 fullWidth
                 maxWidth="sm"
@@ -115,7 +134,7 @@ export class EditNote extends Component {
                             helperText={errors.title}
                             className={classes.TextField}
                             onChange={this.handleChange}
-                            defaultValue={!loading ? title : null}
+                            defaultValue={title}
                             disabled={loading}
                             fullWidth
                         />
@@ -130,7 +149,7 @@ export class EditNote extends Component {
                             helperText={errors.body}
                             className={classes.TextField}
                             onChange={this.handleChange}
-                            defaultValue={!loading ? body : null}
+                            defaultValue={body}
                             disabled={loading}
                             fullWidth
                         />
@@ -162,7 +181,8 @@ EditNote.propTypes = {
     getNote : PropTypes.func.isRequired,
     UI      : PropTypes.object.isRequired,
     note    : PropTypes.object.isRequired,
-    noteId  : PropTypes.string.isRequired
+    noteId  : PropTypes.string.isRequired, 
+    editNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -170,4 +190,4 @@ const mapStateToProps = state => ({
     note : state.data.note
 })
 
-export default connect(mapStateToProps, {getNote})(withStyles(styles)(EditNote))
+export default connect(mapStateToProps, {getNote, editNote})(withStyles(styles)(EditNote))

@@ -68,8 +68,30 @@ export const addNote = newNote => dispatch => {
         });
 };
 
+//change here as well
+export const editNote = (noteId, updatedNote) => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios
+        .put(`/notes/${noteId}`, updatedNote)
+        .then(res => {
+            dispatch({ 
+                type  : DELETE_NOTE, 
+                payload: noteId
+            });
+            dispatch({ 
+                type  : POST_NOTE, 
+                payload: res.data
+            });
+            dispatch({ type : CLEAR_ERRORS});
+        })
+        .catch(err => {
+             dispatch({
+                 type : SET_ERRORS,
+                 payload : err.response.data
+             })
+        })
+};
 
-// change here as well
 export const getNote = noteId => dispatch => {
     dispatch({ type: LOADING_UI });
     axios
@@ -84,23 +106,3 @@ export const getNote = noteId => dispatch => {
         })
         .catch(err => console.log(err));
 }
-
-// //change here as well
-// export const editNote = (noteId, updatedNote) => dispatch => {
-//     dispatch({ type: LOADING_UI });
-//     axios
-//         .put(`/note/${noteId}`, updatedNote)
-//         .then(() => {
-//             dispatch({ 
-//                 type  : , 
-//                 payload: noteId
-//             });
-//             dispatch({ type : CLEAR_ERRORS});
-//         })
-//         .catch(err => {
-//              dispatch({
-//                  type : SET_ERRORS,
-//                  payload : err.response.data
-//              })
-//         })
-// };

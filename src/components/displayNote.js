@@ -37,7 +37,8 @@ export class Note extends Component {
               title,
               body,
               noteId,
-              createdAt
+              createdAt,
+              editedAt
           }
          } = this.props;
 
@@ -62,11 +63,14 @@ export class Note extends Component {
                   </Typography>
                 </div>
                 <div classes={classes.noteFooter}>
-                  <small className={classes.editedTag}>
+                  {editedAt ? (<small className={classes.editedTag}>
+                    Edited {dayjs(editedAt).fromNow()}
+                  </small>):
+                  (<small className={classes.editedTag}>
                     Created {dayjs(createdAt).fromNow()}
-                  </small>
+                  </small>)
+                  }
                   <EditNote noteId={noteId}/>
-                
                 </div>
               </Paper>
           </div>

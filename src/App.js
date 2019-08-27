@@ -25,13 +25,21 @@ import { Provider } from 'react-redux';
 import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser } from './redux/actions/userActions'
 
+
+/** particles JS */
+import Particles from 'react-particles-js';
+import particlesjsconfig from './utilities/particlesjs-config.json';
+
+
 //authentication using Bearer Token
 const expired = decodedToken => {
   return decodedToken.exp * 1000 < Date.now();
 }
 
 axios.defaults.baseURL = 
+  // 'https://europe-west2-chingujournal.cloudfunctions.net/api';
   'http://localhost:5000/chingujournal/europe-west2/api';
+
 
 const receivedToken = localStorage.AuthenticationToken;
 if(receivedToken){
@@ -58,6 +66,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
+        <Particles className='particles' params = {particlesjsconfig}/>
         <ThemeProvider theme={theme}>
           <Router>
             <Navbar />

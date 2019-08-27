@@ -2,8 +2,8 @@ export default {
   /** palette was configured on the Material UI design page */
     palette: {
         primary: {
-          light: '#8bf6ff',
-          main: '#4fc3f7',
+          light: '#0093c4',
+          main: '#0093c4',
           dark: '#0093c4',
           contrastText: '#fff',
         },
@@ -32,9 +32,11 @@ export default {
         margin: '15px auto 10px auto'
       },
       buttonForm : {
-        marginTop: '30px',
-        marginBottom: '15px',
-        position: 'relative'
+        marginTop: '55px',
+        marginBottom: '0px',
+        position: 'relative',
+        // right: '-18.5%',
+        // top: '-18.5%'
       },
       loader : {
         position: 'absolute'
@@ -56,7 +58,7 @@ export default {
       paper: {
         maxWidth: 1200,
         width: '100%',
-        margin : '100px auto 100px auto'
+        margin : '100px auto 0px auto'
       },
       image: {
         width: 128,
@@ -76,16 +78,17 @@ export default {
         color: 'grey',
         margin: '0px 0px',
         padding: '0px 0px 0px 10px',
-        width: '200px'
+        width: '200px',
+        zIndex : ''
       },
       noteArea: {
         maxHeight: '300px',
-        padding: '30px'
+        padding: '10px'
       },
       titleArea: {
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '10px 0 10px 30px'
+        padding: '10px'
       },
       noteFooter : {
         display : 'flex',

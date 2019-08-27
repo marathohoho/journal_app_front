@@ -1,5 +1,6 @@
 html,
 body {
+  background: #0093c4;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
@@ -8,6 +9,7 @@ body {
 .container{
   margin: 80px auto 0 auto;
   max-width: 1600px;
+  z-index:0;
 }
 
 .home-container{
@@ -29,7 +31,13 @@ body {
 
 a{
   text-decoration: none;
-  color: black
+  color: black;
+  z-index: 1;
+  position: relative;
+
+}
+p{
+  z-index: 1;
 }
 
 /* Loader */
@@ -39,7 +47,8 @@ a{
   width: 128px;
   height: 128px;
   padding-top: 100px;
-  left: 50%;
+  text-align: center;
+  left: 48.4%;
   
 }
 .lds-hourglass:after {
@@ -66,4 +75,13 @@ a{
   100% {
     transform: rotate(1800deg);
   }
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
 }

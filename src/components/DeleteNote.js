@@ -16,6 +16,17 @@ const styles = theme => ({
     deleteButton : {
         color: 'red'
     },
+    deleteButtonParent : {
+        marginTop: '0px',
+        marginBottom: '0px',
+        position: 'relative',
+        right: '-17%',
+        top: '-27%'
+    },
+    loaderDelete : {
+    position: 'absolute'
+    },
+    
 })
 
 export class DeleteNote extends Component {
@@ -32,14 +43,14 @@ export class DeleteNote extends Component {
         return (
             
             <div>
-                <Button className={classes.buttonForm} onClick={this.onDelete}>
+                <Button className={classes.deleteButtonParent} onClick={this.onDelete}>
                     <Tooltip title='Delete Note'>
                         <DeleteForeverIcon className={classes.deleteButton}/> 
                     </Tooltip>    
                         {loading && (
                         <CircularProgress
                             size={30}
-                            className={classes.loader}
+                            className={classes.loaderDelete}
                         />)}   
                 </Button> 
             </div>

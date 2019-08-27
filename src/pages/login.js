@@ -17,7 +17,7 @@ import { loginUser} from '../redux/actions/userActions'
 
 //global styles from material design
 const styles = theme => ({
-    ...theme.spreadForStyles
+    ...theme.spreadForStyles,
 })
 
 export class login extends Component {
@@ -123,7 +123,7 @@ export class login extends Component {
                             )}
                         </Button>   
                         <br/>
-                        <p className={classes.editedTag}><small>join us <Link color="primary" to="/signup">here</Link></small></p> 
+                        {<p className={classes.editedTag}><small>join us <Link  className={classes.editedTag} color="primary" to="/signup">here</Link></small></p> }
                     </form>
                 </Grid>
                 <Grid item sm/>
