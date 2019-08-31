@@ -40,8 +40,6 @@ axios.defaults.baseURL =
   'https://europe-west2-chingujournal.cloudfunctions.net/api';
   // 'http://localhost:5000/chingujournal/europe-west2/api';
 
-  
-
 
 const receivedToken = localStorage.AuthenticationToken;
 if(receivedToken){
@@ -51,7 +49,6 @@ if(receivedToken){
     window.location.href = '/login';
   }
   else{
-    console.log('triggered')
     store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common['Authorization'] = receivedToken;
   }

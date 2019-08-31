@@ -13,18 +13,13 @@ import EditNote from '../components/EditNote';
 
 /** Material UI */
 import { 
-    Button, 
     Typography, 
     Paper     
 } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles'
-import EditIcon from '@material-ui/icons/Edit';
-import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import GridList from '@material-ui/core/GridList';
-
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 
 
@@ -37,9 +32,11 @@ const styles = theme => ({
     localTypography : {
       width: '100%',
       wordWrap: 'break-word',
-      
-    }
-   
+    },
+    gridList : {
+      width: '100%',
+      padding: '0px 0px 0px 0px'
+    },   
 })
 
 export class Note extends Component {
@@ -71,13 +68,15 @@ export class Note extends Component {
                   <CardContent>
                     <div >
                       <Paper >
-                      <GridList className={classes.gridList}>
-                        <Typography 
-                          variant="body2" 
-                          className={classes.noteArea}
-                          >
-                            {body} 
-                        </Typography> 
+                      <GridList className={classes.gridList} cols={1}  >
+                          
+                            <Typography 
+                              variant="body2" 
+                              className={classes.noteArea}
+                              >
+                                {body} 
+                            </Typography> 
+                          
                       </GridList>
                         </Paper>      
                     </div>

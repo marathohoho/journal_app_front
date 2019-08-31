@@ -16,7 +16,6 @@ export const getNotes = () => dispatch => {
     axios
         .get('/notes')
         .then(res => {
-            console.log('getting notes')
             dispatch({
                 type: SET_NOTES,
                 payload : res.data
@@ -97,7 +96,6 @@ export const getNote = noteId => dispatch => {
     axios
         .get(`/note/${noteId}`)
         .then(res => {
-            console.log('getting one note')
             dispatch({
                 type: SET_NOTE,
                 payload : res.data

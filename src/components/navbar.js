@@ -1,4 +1,4 @@
-import React, { Component, Fragment} from 'react'
+import React, { Component} from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import PropTypes from 'prop-types';
@@ -15,7 +15,6 @@ import Grid from '@material-ui/core/Grid';
 //redux
 import {connect} from 'react-redux';
 import {logoutUser} from  '../redux/actions/userActions';
-import { Typography } from '@material-ui/core';
 
 /** On logout button is pressed the user muist log out. The logic is implrmenenyed alreadyu, just call the function from the prop. MapAction To Prop */
 
@@ -28,9 +27,6 @@ const styles = theme => ({
     loginButtons : {
         textAlign: 'right',
         paddingTop : '30px'
-    },
-    journalText : {
-        paddingTop : '10px'
     },
     fab: {
         margin: theme.spacing(2),
@@ -62,7 +58,7 @@ class navbar extends Component {
                             justify="flex-end"
                         >
                             <Grid item xs>
-                                <h1 className={classes.journalText}>Journal App</h1> 
+                                <h1>Journal App</h1> 
                             </Grid>
                             <Grid item xs>
                                 <div className={classes.authenticatedButtons}>

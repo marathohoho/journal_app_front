@@ -4,13 +4,13 @@ export default {
         primary: {
           light: '#0093c4',
           main: '#0093c4',
-          dark: '#ffff',
+          dark: '#69bfdb',
           contrastText: '#fff',
         },
         secondary: {
-          light: '#ffb04c',
-          main: '#f57f17',
-          dark: '#bc5100',
+          light: '#0093c4',
+          main: '#0093c4',
+          dark: 'grey',
           contrastText: '#fff',
         }
     },
@@ -81,9 +81,10 @@ export default {
       },
       noteArea: {
         maxHeight: '300px',
-        padding: '0px',
+        padding: '0px 0px 0px 0px',
         wordWrap: 'break-word',
-        width: '100%'
+        width: '100%',
+        alignContent : 'stretch'
       },
       titleArea: {
         display: 'flex',
@@ -103,9 +104,9 @@ export default {
         color: 'white',
         fontSize : '20px'
       },
-      gridList : {
-        cols : '4',
-      },
+      noteAreaGrid: {
+        widht : '100%'
+      }
     }
     
 }

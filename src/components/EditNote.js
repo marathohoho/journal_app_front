@@ -10,7 +10,6 @@ import { CLEAR_ERRORS, CLEAR_NOTE } from '../redux/types';
 
 /** material UI imports */
 import withStyles from '@material-ui/core/styles/withStyles';
-import Fab from '@material-ui/core/Fab';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -28,7 +27,7 @@ const styles = theme => ({
     editButton : {
         color: 'primary',
         textAlign : 'center',
-        color : '#000'
+        // color : '#000'
     },
 })
 
@@ -104,7 +103,6 @@ export class EditNote extends Component {
             note : {
                 title,
                 body,
-                noteId
             }
          } = this.props;
          const { errors } = this.state
